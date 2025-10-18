@@ -1,8 +1,8 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Lời chúc bí mật</title>
+<title>Lời chúc 💌</title>
 <style>
 body {
   font-family: 'Segoe UI', sans-serif;
@@ -10,7 +10,9 @@ body {
   text-align: center;
   padding: 60px 20px;
   color: #444;
+  overflow-x: hidden;
 }
+
 .card {
   background: white;
   padding: 40px;
@@ -21,28 +23,43 @@ body {
   text-align: left;
   animation: fadeIn 1.2s ease-in-out;
 }
+
 h2 {
   color: #e75480;
   text-align: center;
+  animation: glow 2s ease-in-out infinite alternate;
 }
+
 p {
   line-height: 1.6;
   font-size: 17px;
   margin-bottom: 15px;
   text-align: justify;
 }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+
 .footer {
   margin-top: 30px;
   font-style: italic;
   color: #666;
   font-size: 14px;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ffb6c1, 0 0 10px #ffb6c1; }
+  to { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493; }
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
 </style>
 </head>
+
 <body>
 <div class="card">
   <h2>Lời chúc bí mật 💐</h2>
@@ -51,6 +68,7 @@ p {
 </div>
 
 <script>
+ 
 const messages = {
   "dung": `Trong suốt quãng thời gian học cùng nhau, hình ảnh cậu, một lớp trưởng năng động, chu đáo và luôn hết lòng vì tập thể đã để lại trong bản thân tớ thật nhiều tình cảm và sự kính nể. 
   Cảm ơn Dung vì đã luôn là người truyền năng lượng tích cực, là ngọn lửa nhỏ sưởi ấm cả lớp bằng nụ cười và sự tận tâm của mình.<br><br>
@@ -107,9 +125,46 @@ const messages = {
   <br><br>Chúc Quỳnh có một ngày 20/10 thật ý nghĩa, luôn xinh đẹp, hạnh phúc và giữ mãi tinh thần mạnh mẽ, hòa đồng ấy!`
 };
 
+ 
 const params = new URLSearchParams(window.location.search);
 const to = params.get("to");
-document.getElementById("message").innerHTML = messages[to] || "<p>Trang này không tồn tại 💔</p>";
+
+ 
+function typeText(el, text, speed = 25) {
+  el.innerHTML = "";
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      el.innerHTML += text[i];
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+  typing();
+}
+
+ 
+const msg = messages[to];
+if (msg) {
+  typeText(document.getElementById("message"), msg, 25);
+} else {
+  document.getElementById("message").innerHTML = "<p>Trang này không tồn tại 💔</p>";
+}
+
+ 
+const numFlowers = 25;
+for (let i = 0; i < numFlowers; i++) {
+  let flower = document.createElement("div");
+  flower.innerHTML = "🌸";
+  flower.style.position = "fixed";
+  flower.style.top = Math.random() * -100 + "px";
+  flower.style.left = Math.random() * 100 + "vw";
+  flower.style.fontSize = Math.random() * 24 + 16 + "px";
+  flower.style.opacity = Math.random();
+  flower.style.animation = `fall ${5 + Math.random() * 5}s linear infinite`;
+  flower.style.pointerEvents = "none";
+  document.body.appendChild(flower);
+}
 </script>
 </body>
 </html>
