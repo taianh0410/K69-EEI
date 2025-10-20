@@ -5,14 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Lời chúc 💌</title>
 <style>
-html, body {
-  -webkit-text-size-adjust: 100%;
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
 body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(120deg, #ffdde1, #ee9ca7);
@@ -20,7 +12,9 @@ body {
   padding: 60px 20px;
   color: #444;
   overflow: hidden;
+  height: 100vh;
   position: relative;
+  -webkit-text-size-adjust: 100%;
 }
 
 .card {
@@ -30,9 +24,8 @@ body {
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
   display: inline-block;
   max-width: 700px;
-  width: 100%;
   text-align: left;
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 1.2s ease-in-out;
   position: relative;
   z-index: 10;
 }
@@ -41,8 +34,6 @@ h2 {
   color: #e75480;
   text-align: center;
   animation: glow 2s ease-in-out infinite alternate;
-  font-size: 26px;
-  margin-top: 0;
 }
 
 p {
@@ -53,8 +44,7 @@ p {
 }
 
 #message {
-  min-height: 400px; /* Giữ cố định không gian, tránh nhảy chữ */
-  word-break: break-word;
+  min-height: 400px;
 }
 
 .footer {
@@ -77,66 +67,89 @@ p {
 
 @keyframes fall {
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  90% { opacity: 0.9; }
   100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
-<div class="card">
-  <h2>Lời chúc bí mật 💐</h2>
-  <div id="message"></div>
-  <div class="footer">— Tập thể các bạn nam trong lớp —</div>
-</div>
+  <div class="card">
+    <h2>Lời chúc bí mật 💐</h2>
+    <div id="message"></div>
+    <div class="footer">— Tập thể các bạn nam trong lớp —</div>
+  </div>
 
 <script>
-// 🌸 Danh sách lời chúc
+// 🌸 Lời chúc cho từng người
 const messages = {
-  "dung": `...`, // (Giữ nguyên phần nội dung của bạn ở đây)
-  "hang": `...`,
-  "ha": `...`,
-  "hien": `...`,
-  "quynh-anh": `...`,
-  "phuong": `...`,
-  "hai-anh": `...`,
-  "quynh": `...`
+  "dung": `Trong suốt quãng thời gian học cùng nhau, hình ảnh cậu – một lớp trưởng năng động, chu đáo và luôn hết lòng vì tập thể – đã để lại trong chúng tớ thật nhiều tình cảm và sự kính nể.<br><br>
+  Cảm ơn Dung vì đã luôn là người truyền năng lượng tích cực, là ngọn lửa nhỏ sưởi ấm cả lớp bằng nụ cười và sự tận tâm của mình. Nhân dịp 20/10, các bạn nam muốn gửi đến cậu lời chúc chân thành nhất.<br><br>
+  Chúc Dung luôn giữ mãi nét đáng yêu, nhiệt huyết và tinh thần trách nhiệm ấy. Mong rằng mọi nỗ lực của cậu sẽ được đền đáp xứng đáng, những giấc mơ của cậu sẽ sớm trở thành hiện thực. Dù đi đến đâu, chúng tớ vẫn luôn tự hào vì từng có một lớp trưởng tuyệt vời như Dung – người con gái vừa mạnh mẽ, vừa dịu dàng, và luôn hết mình vì tập thể.<br><br>
+  💖 Cảm ơn Dung, vì đã là “trái tim” của lớp chúng ta!`,
+
+  "hang": `Nhân ngày 20/10, các bạn nam trong lớp xin gửi đến cậu những lời chúc tốt đẹp và chân thành nhất! Có thể Hằng không phải là người hay nói, không phải là người thường đứng giữa đám đông, nhưng chính sự lặng lẽ, dịu dàng và tinh tế của cậu lại là điều khiến mọi người đặc biệt trân trọng.<br><br>
+  Hằng giống như một cơn gió nhẹ – không ồn ào nhưng đủ khiến người ta thấy dễ chịu, đủ để mỗi ngày đến lớp đều trở nên bình yên hơn.<br><br>
+  Chúc Hằng luôn xinh đẹp, hạnh phúc và giữ mãi nét dịu dàng đáng quý ấy. Mong rằng những điều tốt đẹp nhất sẽ luôn mỉm cười với cậu – cô gái trầm lặng mà ấm áp, nhẹ nhàng mà khiến ai cũng phải nhớ!`,
+
+  "ha": `Nhân ngày 20/10, các bạn nam trong lớp xin gửi đến cậu những lời chúc tốt đẹp và chân thành nhất! Hà không phải là người nói nhiều, nhưng mỗi khi cậu lên tiếng, ai cũng cảm nhận được sự chín chắn, chân thành và đầy suy nghĩ trong từng lời nói.<br><br>
+  Ở Hà có một vẻ đẹp rất riêng – không ồn ào, không phô trương, mà dịu dàng và sâu sắc, như một bông hoa nở khẽ trong nắng sớm, lặng lẽ nhưng rạng rỡ theo cách của riêng mình.<br><br>
+  Chúc Hà một ngày 20/10 thật ý nghĩa, luôn bình an, hạnh phúc và giữ mãi nét hiền hậu, nhẹ nhàng ấy. Mong rằng những nỗ lực của cậu, dù thầm lặng đến đâu, cũng sẽ luôn được trân trọng và đáp lại bằng thật nhiều yêu thương.`,
+
+  "hien": `Nhân ngày Phụ nữ Việt Nam 20/10, các bạn nam xin gửi đến cậu lời chúc tốt đẹp nhất! Chúc Hiền luôn vui vẻ, xinh đẹp, học giỏi và gặp thật nhiều may mắn trong cuộc sống.<br><br>
+  Dù ít nói hay giản dị, nhưng sự hiện diện của cậu vẫn là một phần khiến lớp mình trở nên đầy đủ và ấm áp hơn. Mong rằng cậu sẽ luôn giữ nụ cười tươi, tinh thần lạc quan và niềm tin vào những điều tốt đẹp phía trước.<br><br>
+  💐 Chúc Hiền có một ngày 20/10 thật trọn vẹn – nhận được thật nhiều yêu thương, niềm vui và lời chúc từ tất cả mọi người xung quanh!`,
+
+  "quynh-anh": `Nhân ngày Phụ nữ Việt Nam 20/10, các bạn nam xin gửi đến cậu lời chúc thân thương và chân thành nhất! Quỳnh Anh có thể là cô gái nhỏ con nhất lớp, nhưng lại mang trong mình một nguồn năng lượng tươi sáng khiến ai ở gần cũng cảm thấy vui vẻ và dễ chịu.<br><br>
+  Nụ cười của cậu như ánh nắng dịu trong những ngày mưa – nhẹ nhàng, trong trẻo và luôn lan tỏa niềm vui cho mọi người xung quanh.<br><br>
+  🌸 Chúc Quỳnh Anh luôn mạnh khỏe, xinh đẹp, học giỏi và giữ mãi nụ cười tươi ấy. Mong rằng cuộc sống của cậu sẽ luôn ngập tràn niềm vui, hạnh phúc và thật nhiều điều ngọt ngào như chính con người cậu vậy!`,
+
+  "phuong": `Nhân ngày Phụ nữ Việt Nam 20/10, các bạn nam xin gửi đến cậu những lời chúc tốt đẹp và chân thành nhất! Chúc Phương luôn vui vẻ, xinh đẹp, học giỏi và gặp thật nhiều may mắn trong cuộc sống.<br><br>
+  Cảm ơn cậu vì đã luôn là một phần trong tập thể này – giản dị, hòa đồng và mang đến cảm giác thân thuộc cho mọi người xung quanh.<br><br>
+  🌷 Mong rằng những ngày tháng sắp tới của Phương sẽ luôn tràn đầy tiếng cười, hạnh phúc và những điều tươi sáng nhất!`,
+
+  "hai-anh": `Nhân ngày Phụ nữ Việt Nam 20/10, các bạn nam xin gửi đến cậu những lời chúc thân thương và tốt đẹp nhất! Ở Hải Anh có một điều rất đặc biệt, vừa điềm đạm, chững chạc trong cách nói năng, nhưng lại luôn biết cách mang đến tiếng cười bằng sự hóm hỉnh và đáng yêu của mình.<br><br>
+  Cậu giống như một làn gió vui vẻ giữa không khí nghiêm túc của lớp học – nhẹ nhàng, thoải mái mà vẫn đầy duyên dáng.<br><br>
+  🌸 Chúc Hải Anh luôn giữ mãi nét duyên dáng, thông minh và vui tươi ấy. Mong rằng mỗi ngày đến với cậu đều là một ngày đầy nụ cười, hạnh phúc và những điều tốt đẹp nhất!`,
+
+  "quynh": `Nhân ngày Phụ nữ Việt Nam 20/10, các bạn nam xin gửi đến cậu lời chúc tốt đẹp và tràn đầy yêu thương nhất! Quỳnh luôn là người mang đến năng lượng tích cực cho mọi người xung quanh, lúc nào cũng vui vẻ, dễ gần và sẵn sàng giúp đỡ bất cứ ai.<br><br>
+  Ở cậu là sự kết hợp hiếm có giữa sự mạnh mẽ và dịu dàng – một cô gái có thể tự mình vượt qua khó khăn, nhưng vẫn luôn biết cách quan tâm, sẻ chia với bạn bè bằng tấm lòng chân thành.<br><br>
+  🌹 Chúc Quỳnh có một ngày 20/10 thật ý nghĩa, luôn xinh đẹp, hạnh phúc và giữ mãi tinh thần mạnh mẽ, hòa đồng ấy. Mong rằng cậu sẽ luôn tỏa sáng theo cách riêng của mình – rực rỡ, tự tin và tràn đầy niềm vui!`
 };
 
 // 🌸 Lấy người nhận từ URL
 const params = new URLSearchParams(window.location.search);
 const to = params.get("to");
-const el = document.getElementById("message");
 
-// 🌸 Hiệu ứng đánh máy mượt hơn với requestAnimationFrame
+// 🌸 Hiệu ứng đánh máy
 function typeText(el, html, speed = 30) {
   el.innerHTML = "";
-  const temp = document.createElement("span");
-  el.appendChild(temp);
   let i = 0;
-  const type = () => {
+  function typing() {
     if (i < html.length) {
       if (html[i] === "<") {
         const end = html.indexOf(">", i);
-        temp.insertAdjacentHTML("beforeend", html.slice(i, end + 1));
+        el.innerHTML += html.slice(i, end + 1);
         i = end + 1;
       } else {
-        temp.textContent += html[i];
+        el.innerHTML += html[i];
         i++;
       }
-      setTimeout(() => requestAnimationFrame(type), speed);
+      setTimeout(typing, speed);
     }
-  };
-  requestAnimationFrame(type);
+  }
+  typing();
 }
 
 // 🌸 Hiển thị lời chúc
+const el = document.getElementById("message");
 if (messages[to]) {
   setTimeout(() => typeText(el, messages[to], 28), 600);
 } else {
   el.innerHTML = "<p>Trang này không tồn tại 💔</p>";
 }
 
-// 🌸 Hiệu ứng hoa rơi nhẹ, mượt hơn
+// 🌸 Hiệu ứng hoa rơi
 const numFlowers = 25;
 for (let i = 0; i < numFlowers; i++) {
   const flower = document.createElement("div");
